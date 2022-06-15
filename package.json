@@ -1,0 +1,23 @@
+{
+  "name": "weblayoutreflowstaticanalysis",
+  "version": "0.0.1",
+  "description": "Tool to detect possible Web Layout Reflow issues in the source code of a project",
+  "main": "src/index.js",
+  "scripts": {
+    "scan": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SilasReinagel/WebLayoutReflowStaticAnalysis.git"
+  },
+  "author": "Silas Reinagel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SilasReinagel/WebLayoutReflowStaticAnalysis/issues"
+  },
+  "homepage": "https://github.com/SilasReinagel/WebLayoutReflowStaticAnalysis#readme",
+  "dependencies": {
+    "search-in-file": "^1.2.2"
+  }
+}
