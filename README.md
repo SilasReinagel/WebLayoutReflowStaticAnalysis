@@ -19,3 +19,38 @@ In the future, this may be evolved to be an npm-publish command-line tool.
 ## Usage
 
 1. `npm run scan [filePath]`
+2. Reports will be output to folder `report`
+
+---
+
+## Sample Report + Checklist
+
+**Checklist:** 
+
+These represent files that should be inspected or changed to optimize web layout flow.
+```
+[
+  "./utilities/escapeHTML.ts",
+  "./utilities/getIsClampEnabled.ts",
+  "./utilities/getScrollBarSize.js",
+  "./utilities/index.ts"
+]
+```
+
+**Report:**
+
+These declare the specific files and lines that have flagged layout elements.
+
+```
+[ 
+  {
+    lines: [
+      {
+        filePath: './shared/TextField/TextField.tsx',
+        line: 'if (isFocused) inputField?.current?.focus();',
+        lineNo: 35
+      }
+    ]
+  }
+]
+```

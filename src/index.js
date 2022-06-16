@@ -64,19 +64,21 @@ const searchTerms = [
   '.select()',
 ];
 
-let issuesCount = 0;
 const report = [];
+const checklist = [];
 
 searchTerms.forEach(s => search.fileSearch([ targetDir ], s, searchOptions)
   .then(v => v
     .filter(x => x.length > 0)
     .forEach(x => {
-      const issueNumber = ++issuesCount;
       const reflowIssue = ({ 
-        issueNumber, 
         lines: x.map(f => ({ ...f, filePath: f.filePath.replaceAll(targetDir, '.') })) 
       });
       console.warn(reflowIssue);
       report.push(reflowIssue);
-      fs.writeFileSync('report/reflow-layout-report.json', JSON.stringify(report));
+      report.sort((a,b) => a.lines[0].filePath.localeCompare(b.lines[0].filePath));
+      checklist.push(reflowIssue.lines[0].filePath);
+      checklist.sort((a,b) => a.localeCompare(b));
+      fs.writeFileSync('report/reflow-layout-report.json', JSON.stringify(report, null, 2));
+      fs.writeFileSync('report/reflow-layout-checklist-report.json', JSON.stringify([...new Set(checklist)], null, 2));
     }))); 
